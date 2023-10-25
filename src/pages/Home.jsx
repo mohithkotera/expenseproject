@@ -28,19 +28,20 @@ const Home = () => {
     desp: "",
   });
 
-  const create =  () => {
-    // if (
-    //   !details.name ||
-    //   !details.category ||
-    //   !details.dateofExp ||
-    //   !details.amount ||
-    //   !details.desp
-    // ) {
-    //   return alert("Please fill all fields");
-    // }
-     setArr((pre) => {
-      return [...pre, details];
-    });
+  const create = () => {
+    if (
+      !details.name ||
+      !details.category ||
+      !details.dateofExp ||
+      !details.amount ||
+      !details.desp
+    ) {
+      return alert("Please fill all fields");
+    }
+    // setArr((pre) => {
+    //   return [...pre, details];
+    // });
+     setArr([...details,details]);
     setCreateModal(false);
     setDetails({
       name: "",
