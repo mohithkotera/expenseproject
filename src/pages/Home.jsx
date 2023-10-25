@@ -113,16 +113,19 @@ const Home = () => {
   }, [edit]);
 
   useEffect(() => {
-    const filterData = arr?.filter(
-      (e) =>
-        new Date(e.dateofExp).toLocaleDateString() ===
-          new Date(filterDate).toLocaleDateString() || e.name === byname
-    );
-    if (filterData) {
-      setFiltered(filterData);
-    } else {
-      setFiltered(arr);
-    }
+    const Filter = async () => {
+      const filterData = await arr.filter(
+        (e) =>
+          new Date(e.dateofExp).toLocaleDateString() ===
+            new Date(filterDate).toLocaleDateString() || e.name === byname
+      );
+      if (filterData.length >= 1) {
+        await setFiltered(filterData);
+      } else {
+        await setFiltered(arr);
+      }
+    };
+    Filter();
   }, [filterDate, byname, arr]);
 
   return (
