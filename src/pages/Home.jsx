@@ -177,7 +177,7 @@ const Home = () => {
             </thead>
 
             <tbody>
-              {filterd.map((item, index) => (
+              {filterd?.map((item, index) => (
                 <tr key={index}>
                   <td className="border border-grey py-2 px-2 text-center">
                     {item.name}
