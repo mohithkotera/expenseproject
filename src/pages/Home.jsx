@@ -41,7 +41,7 @@ const Home = () => {
     // setArr((pre) => {
     //   return [...pre, details];
     // });
-     setArr([...details,details]);
+     setArr([details]);
     setCreateModal(false);
     setDetails({
       name: "",
