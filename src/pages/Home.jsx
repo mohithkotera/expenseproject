@@ -28,29 +28,29 @@ const Home = () => {
     desp: "",
   });
 
-  const create = async () => {
-    if (
-      !details.name ||
-      !details.category ||
-      !details.dateofExp ||
-      !details.amount ||
-      !details.desp
-    ) {
-      return alert("Please fill all fields");
-    }
-    await setArr((pre) => {
+  const create =  () => {
+    // if (
+    //   !details.name ||
+    //   !details.category ||
+    //   !details.dateofExp ||
+    //   !details.amount ||
+    //   !details.desp
+    // ) {
+    //   return alert("Please fill all fields");
+    // }
+     setArr((pre) => {
       return [...pre, details];
     });
     setCreateModal(false);
-    // setDetails({
-    //   name: "",
-    //   category: "",
-    //   dateofExp: "",
-    //   amount: "",
-    //   updatedat: new Date(Date.now()).toDateString(),
-    //   createdby: usermail,
-    //   desp: "",
-    // });
+    setDetails({
+      name: "",
+      category: "",
+      dateofExp: "",
+      amount: "",
+      updatedat: new Date(Date.now()).toDateString(),
+      createdby: usermail,
+      desp: "",
+    });
   };
 
   const Delete = (id) => {
