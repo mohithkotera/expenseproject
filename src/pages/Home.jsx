@@ -38,19 +38,19 @@ const Home = () => {
     ) {
       return alert("Please fill all fields");
     }
-    setArr((pre) => {
+    await setArr((pre) => {
       return [...pre, details];
     });
     setCreateModal(false);
-    setDetails({
-      name: "",
-      category: "",
-      dateofExp: "",
-      amount: "",
-      updatedat: new Date(Date.now()).toDateString(),
-      createdby: usermail,
-      desp: "",
-    });
+    // setDetails({
+    //   name: "",
+    //   category: "",
+    //   dateofExp: "",
+    //   amount: "",
+    //   updatedat: new Date(Date.now()).toDateString(),
+    //   createdby: usermail,
+    //   desp: "",
+    // });
   };
 
   const Delete = (id) => {
