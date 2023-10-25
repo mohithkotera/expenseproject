@@ -113,7 +113,7 @@ const Home = () => {
   }, [edit]);
 
   useEffect(() => {
-    const filterData = arr.filter(
+    const filterData = arr?.filter(
       (e) =>
         new Date(e.dateofExp).toLocaleDateString() ===
           new Date(filterDate).toLocaleDateString() || e.name === byname
