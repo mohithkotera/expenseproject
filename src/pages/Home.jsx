@@ -28,7 +28,7 @@ const Home = () => {
     desp: "",
   });
 
-  const create = () => {
+  const create = async () => {
     if (
       !details.name ||
       !details.category ||
@@ -38,7 +38,7 @@ const Home = () => {
     ) {
       return alert("Please fill all fields");
     }
-    setArr((pre) => {
+    await setArr((pre) => {
       return [...pre, details];
     });
     setCreateModal(false);
@@ -95,7 +95,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("tabledata", JSON.stringify(arr));
+    const Storedatalocaly = async () => {
+      await localStorage.setItem("tabledata", JSON.stringify(arr));
+    };
+    Storedatalocaly();
   }, [arr]);
 
   useEffect(() => {
