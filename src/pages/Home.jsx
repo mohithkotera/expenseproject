@@ -38,7 +38,7 @@ const Home = () => {
     ) {
       return alert("Please fill all fields");
     }
-    await setArr((pre) => {
+    setArr((pre) => {
       return [...pre, details];
     });
     setCreateModal(false);
@@ -95,10 +95,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const Storedatalocaly = async () => {
-      await localStorage.setItem("tabledata", JSON.stringify(arr));
-    };
-    Storedatalocaly();
+    setFiltered(arr);
+    localStorage.setItem("tabledata", JSON.stringify(arr));
   }, [arr]);
 
   useEffect(() => {
@@ -115,22 +113,35 @@ const Home = () => {
     });
   }, [edit]);
 
-  useEffect(() => {
-    const Filter = async () => {
-      await setFiltered(arr);
-      const filterData = await arr.filter(
-        (e) =>
-          new Date(e.dateofExp).toLocaleDateString() ===
-            new Date(filterDate).toLocaleDateString() || e.name === byname
-      );
-      if (filterData.length >= 1) {
-        await setFiltered(filterData);
-      } else {
-        await setFiltered(arr);
-      }
-    };
-    Filter();
-  }, [filterDate, byname, arr]);
+  const Filter = async () => {
+    const filterData = await arr.filter(
+      (e) =>
+        new Date(e.dateofExp).toLocaleDateString() ===
+          new Date(filterDate).toLocaleDateString() || e.name === byname
+    );
+    if (filterData.length >= 1) {
+      setFiltered(filterData);
+    } else {
+      setFiltered(arr);
+    }
+  };
+
+  // useEffect(() => {
+  //   const Filter = async () => {
+  //     await setFiltered(arr);
+  //     const filterData = await arr.filter(
+  //       (e) =>
+  //         new Date(e.dateofExp).toLocaleDateString() ===
+  //           new Date(filterDate).toLocaleDateString() || e.name === byname
+  //     );
+  //     if (filterData.length >= 1) {
+  //       await setFiltered(filterData);
+  //     } else {
+  //       await setFiltered(arr);
+  //     }
+  //   };
+  //   Filter();
+  // }, [filterDate, byname, arr]);
 
   return (
     <div className="p-10">
@@ -151,6 +162,12 @@ const Home = () => {
               type="text"
               onChange={(e) => setByname(e.target.value)}
             />
+            <button
+              onClick={() => Filter()}
+              className="bg-[#23ce6b] text-white px-2  flex gap-x-2 items-center"
+            >
+              Filter
+            </button>
             <button
               onClick={() => setCreateModal(true)}
               className="bg-[#23ce6b] text-white px-2  flex gap-x-2 items-center"
