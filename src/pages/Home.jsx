@@ -39,10 +39,10 @@ const Home = () => {
       return alert("Please fill all fields");
     }
 
-    // setArr((pre) => {
-    //   return [...pre, details];
-    // });
-    setArr([{ ...details }]);
+    setArr((pre) => {
+      return [...pre, details];
+    });
+   
     setCreateModal(false);
     setDetails({
       name: "",
