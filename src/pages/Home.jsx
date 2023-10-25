@@ -118,7 +118,7 @@ const Home = () => {
         new Date(e.dateofExp).toLocaleDateString() ===
           new Date(filterDate).toLocaleDateString() || e.name === byname
     );
-    if (filterData.length >= 1) {
+    if (filterData) {
       setFiltered(filterData);
     } else {
       setFiltered(arr);
