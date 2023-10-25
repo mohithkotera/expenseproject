@@ -117,6 +117,7 @@ const Home = () => {
 
   useEffect(() => {
     const Filter = async () => {
+      await setFiltered(arr);
       const filterData = await arr.filter(
         (e) =>
           new Date(e.dateofExp).toLocaleDateString() ===
